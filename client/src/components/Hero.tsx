@@ -41,7 +41,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <div className="flex items-center gap-2 pt-4">
               <CheckCircle2 className="w-5 h-5 text-primary" />
               <span className="text-sm sm:text-base opacity-90">
-                Oltre 500 spazi attivi • Partner di Netflix e Mediaset
+                Oltre 500 spazi attivi
               </span>
             </div>
           </div>
