@@ -1,13 +1,11 @@
 import netflixLogo from "@assets/Netflix-Logo-2006-500x333-1_1759442083338.png";
 import mediasetLogo from "@assets/Mediaset_Logo_1759442083337.png";
-import pinellaLogo from "@assets/Pinella_RGB_Wordmark_ColourWhite_M_1759442083338.webp";
 import gaumontLogo from "@assets/Gaumont_logo.svg_1759442090117.png";
 
 export default function ClientLogos() {
   const logos = [
     { name: "Netflix", src: netflixLogo },
     { name: "Mediaset", src: mediasetLogo },
-    { name: "Pinella", src: pinellaLogo },
     { name: "Gaumont", src: gaumontLogo },
   ];
 
@@ -18,7 +16,7 @@ export default function ClientLogos() {
           Trusted by
         </h2>
         
-        <div className="flex flex-wrap justify-center items-center gap-12">
+        <div className="flex justify-center items-center gap-12">
           {logos.map((logo) => (
             <div
               key={logo.name}
