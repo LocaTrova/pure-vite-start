@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onCTAClick }: HeroProps) {
   return (
-    <section className="relative w-full h-[70vh] md:h-[75vh] min-h-[500px] overflow-hidden pt-14">
+    <section className="relative w-full min-h-[70vh] md:min-h-[75vh] overflow-hidden mt-14">
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
