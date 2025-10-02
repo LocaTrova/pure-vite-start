@@ -8,9 +8,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Home, Building2, Factory, Castle, Palette, Trees, Briefcase, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import type { FormSubmission } from "@shared/schema";
 
 export default function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1);
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     spaceType: "",
     name: "",
@@ -23,6 +28,51 @@ export default function MultiStepForm() {
     notes: "",
     privacy: false,
     marketing: false,
+  });
+
+  const submitMutation = useMutation({
+    mutationFn: async (data: FormSubmission) => {
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || "Errore nell'invio della richiesta");
+      }
+      
+      return result;
+    },
+    onSuccess: () => {
+      toast({
+        title: "Richiesta inviata!",
+        description: "Ti ricontatteremo presto per discutere del tuo spazio.",
+      });
+      setFormData({
+        spaceType: "",
+        name: "",
+        email: "",
+        phone: "",
+        city: "",
+        squareMeters: [100],
+        availability: [],
+        characteristics: "",
+        notes: "",
+        privacy: false,
+        marketing: false,
+      });
+      setCurrentStep(1);
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Errore nell'invio",
+        description: error.message || "Si è verificato un errore. Riprova più tardi.",
+        variant: "destructive",
+      });
+    },
   });
 
   const totalSteps = 4;
@@ -53,7 +103,20 @@ export default function MultiStepForm() {
   };
 
   const handleSubmit = () => {
-    console.log("Form submitted:", formData);
+    const submissionData: FormSubmission = {
+      spaceType: formData.spaceType,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      city: formData.city,
+      squareMeters: formData.squareMeters[0],
+      availability: formData.availability,
+      characteristics: formData.characteristics,
+      notes: formData.notes,
+      privacy: formData.privacy,
+      marketing: formData.marketing,
+    };
+    submitMutation.mutate(submissionData);
   };
 
   const toggleAvailability = (value: string) => {
@@ -70,8 +133,9 @@ export default function MultiStepForm() {
       case 1:
         return formData.spaceType !== "";
       case 2:
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return formData.name.trim() !== "" && 
-               formData.email.trim() !== "" && 
+               emailRegex.test(formData.email.trim()) && 
                formData.phone.trim() !== "" && 
                formData.city.trim() !== "";
       case 3:
@@ -318,10 +382,10 @@ export default function MultiStepForm() {
                 <Button
                   onClick={handleSubmit}
                   className="flex-1"
-                  disabled={!isStepValid()}
+                  disabled={!isStepValid() || submitMutation.isPending}
                   data-testid="button-submit"
                 >
-                  Invia richiesta
+                  {submitMutation.isPending ? "Invio in corso..." : "Invia richiesta"}
                 </Button>
               )}
             </div>
