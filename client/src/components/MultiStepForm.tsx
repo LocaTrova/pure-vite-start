@@ -20,7 +20,6 @@ export default function MultiStepForm() {
     squareMeters: [100],
     availability: [] as string[],
     characteristics: "",
-    expectations: "",
     notes: "",
     privacy: false,
     marketing: false,
@@ -96,13 +95,13 @@ export default function MultiStepForm() {
               {currentStep === 1 && "Che tipo di spazio hai?"}
               {currentStep === 2 && "Informazioni di contatto"}
               {currentStep === 3 && "Dettagli dello spazio"}
-              {currentStep === 4 && "Aspettative e conferma"}
+              {currentStep === 4 && "Conferma e invia"}
             </CardTitle>
             <CardDescription>
               {currentStep === 1 && "Seleziona la categoria che meglio descrive il tuo spazio"}
               {currentStep === 2 && "Inserisci i tuoi dati per essere ricontattato"}
               {currentStep === 3 && "Raccontaci di più sul tuo spazio"}
-              {currentStep === 4 && "Ultimi dettagli prima di inviarci la richiesta"}
+              {currentStep === 4 && "Ultimo step prima di inviarci la tua richiesta"}
             </CardDescription>
           </CardHeader>
 
@@ -231,30 +230,19 @@ export default function MultiStepForm() {
             {currentStep === 4 && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="expectations">Le tue aspettative</Label>
-                  <Select value={formData.expectations} onValueChange={(value) => setFormData({ ...formData, expectations: value })}>
-                    <SelectTrigger data-testid="select-expectations">
-                      <SelectValue placeholder="Seleziona..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="extra">Un'entrata extra ogni tanto va benissimo</SelectItem>
-                      <SelectItem value="regular">Mi piacerebbe guadagnare regolarmente con il mio spazio</SelectItem>
-                      <SelectItem value="maximize">Voglio sfruttare al massimo la mia location</SelectItem>
-                      <SelectItem value="help">Non ho idea, aiutatemi voi</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div className="space-y-2">
                   <Label htmlFor="notes">Note aggiuntive (opzionale)</Label>
                   <Textarea
                     id="notes"
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    placeholder="Qualsiasi altra informazione che vuoi condividere..."
-                    rows={3}
+                    placeholder="C'è qualcos'altro che vuoi farci sapere sul tuo spazio?"
+                    rows={4}
+                    maxLength={500}
                     data-testid="textarea-notes"
                   />
+                  <p className="text-xs text-muted-foreground">
+                    {formData.notes.length}/500 caratteri
+                  </p>
                 </div>
                 
                 <div className="space-y-4 pt-2">
@@ -266,7 +254,7 @@ export default function MultiStepForm() {
                       data-testid="checkbox-privacy"
                     />
                     <Label htmlFor="privacy" className="cursor-pointer font-normal text-sm leading-tight">
-                      Accetto termini e condizioni e privacy policy *
+                      Ho letto e accetto i <a href="#" className="text-primary hover:underline">Termini e Condizioni</a> e l'<a href="#" className="text-primary hover:underline">Informativa Privacy</a> *
                     </Label>
                   </div>
                   
@@ -278,7 +266,7 @@ export default function MultiStepForm() {
                       data-testid="checkbox-marketing"
                     />
                     <Label htmlFor="marketing" className="cursor-pointer font-normal text-sm leading-tight">
-                      Desidero ricevere aggiornamenti su opportunità future
+                      Accetto di ricevere comunicazioni promozionali da Locatrova su nuove opportunità, consigli per ottimizzare la mia location e aggiornamenti sulla piattaforma
                     </Label>
                   </div>
                 </div>
@@ -314,7 +302,7 @@ export default function MultiStepForm() {
                   disabled={!formData.privacy}
                   data-testid="button-submit"
                 >
-                  Richiedi la chiamata gratuita
+                  Invia il form
                 </Button>
               )}
             </div>
