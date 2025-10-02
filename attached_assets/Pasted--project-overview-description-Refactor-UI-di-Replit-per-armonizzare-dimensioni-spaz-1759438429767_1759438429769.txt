@@ -1,0 +1,212 @@
+{
+  "project_overview": {
+    "description": "Refactor UI di Replit per armonizzare dimensioni, spaziature e proporzioni. Obiettivo: interfaccia bilanciata e professionale seguendo principi di design system.",
+    "constraints": [
+      "Responsive su tutti i breakpoint",
+      "Mantenere funzionalità esistenti",
+      "Applicare proporzioni armoniche (scale 8px o golden ratio)",
+      "Consistenza tipografica su tutti i componenti",
+      "Accessibilità WCAG 2.1 AA",
+      "Performance: no layout shifts"
+    ]
+  },
+  "design_tokens": {
+    "spacing_scale": {
+      "base_unit": "8px",
+      "values": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px"
+      }
+    },
+    "typography_scale": {
+      "base_size": "16px",
+      "scale_ratio": 1.25,
+      "sizes": {
+        "xs": "12px",
+        "sm": "14px",
+        "base": "16px",
+        "lg": "20px",
+        "xl": "25px",
+        "2xl": "31px",
+        "3xl": "39px",
+        "4xl": "49px"
+      },
+      "line_heights": {
+        "tight": 1.2,
+        "normal": 1.5,
+        "relaxed": 1.75
+      }
+    },
+    "border_radius": {
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px"
+    }
+  },
+  "layout_structure": {
+    "container_max_width": {
+      "desktop": "1440px",
+      "tablet": "100%",
+      "mobile": "100%"
+    },
+    "sidebar": {
+      "width": {
+        "collapsed": "64px",
+        "expanded": "280px"
+      },
+      "padding": "md",
+      "gap_between_items": "sm"
+    },
+    "main_content_area": {
+      "padding": {
+        "desktop": "xl",
+        "tablet": "lg",
+        "mobile": "md"
+      },
+      "max_width": "1200px",
+      "margin": "0 auto"
+    },
+    "header": {
+      "height": "64px",
+      "padding_horizontal": "lg",
+      "align_items": "center"
+    }
+  },
+  "component_specifications": {
+    "buttons": {
+      "sizes": {
+        "sm": {
+          "padding": "6px 12px",
+          "font_size": "sm",
+          "height": "32px"
+        },
+        "md": {
+          "padding": "10px 20px",
+          "font_size": "base",
+          "height": "40px"
+        },
+        "lg": {
+          "padding": "14px 28px",
+          "font_size": "lg",
+          "height": "48px"
+        }
+      },
+      "border_radius": "md",
+      "gap_between_icon_text": "sm"
+    },
+    "cards": {
+      "padding": "lg",
+      "border_radius": "lg",
+      "gap_between_elements": "md",
+      "min_height": "auto",
+      "box_shadow": "0 2px 8px rgba(0,0,0,0.08)"
+    },
+    "forms": {
+      "input_height": "40px",
+      "input_padding": "10px 16px",
+      "label_margin_bottom": "sm",
+      "field_gap": "lg",
+      "border_radius": "md"
+    },
+    "navigation": {
+      "item_height": "40px",
+      "item_padding": "8px 16px",
+      "gap_between_items": "xs",
+      "icon_size": "20px",
+      "icon_text_gap": "12px"
+    }
+  },
+  "code_editor_area": {
+    "container": {
+      "min_height": "calc(100vh - 64px)",
+      "padding": "0"
+    },
+    "editor_panel": {
+      "width": "60%",
+      "padding": "md",
+      "font_size": "14px",
+      "line_height": "1.6"
+    },
+    "preview_panel": {
+      "width": "40%",
+      "padding": "0",
+      "border_left": "1px solid #e0e0e0"
+    },
+    "toolbar": {
+      "height": "48px",
+      "padding": "0 lg",
+      "gap_between_items": "md",
+      "border_bottom": "1px solid #e0e0e0"
+    }
+  },
+  "file_tree": {
+    "container": {
+      "padding": "md",
+      "width": "100%"
+    },
+    "item": {
+      "height": "32px",
+      "padding": "4px 8px",
+      "indent_per_level": "16px",
+      "gap_icon_text": "8px",
+      "border_radius": "sm"
+    },
+    "icon_size": "16px",
+    "font_size": "sm"
+  },
+  "modals_and_dialogs": {
+    "overlay": {
+      "background": "rgba(0,0,0,0.5)",
+      "backdrop_filter": "blur(4px)"
+    },
+    "dialog": {
+      "max_width": {
+        "sm": "400px",
+        "md": "600px",
+        "lg": "800px"
+      },
+      "padding": "xl",
+      "border_radius": "xl",
+      "gap_between_sections": "lg"
+    },
+    "dialog_header": {
+      "margin_bottom": "lg",
+      "title_size": "2xl"
+    },
+    "dialog_footer": {
+      "margin_top": "xl",
+      "gap_between_buttons": "md",
+      "justify_content": "flex-end"
+    }
+  },
+  "responsive_breakpoints": {
+    "mobile": "320px - 767px",
+    "tablet": "768px - 1023px",
+    "desktop": "1024px+",
+    "adjustments": {
+      "mobile": {
+        "sidebar": "overlay instead of fixed",
+        "font_scale": "reduce by 10%",
+        "padding_scale": "reduce by 25%"
+      },
+      "tablet": {
+        "editor_preview": "stack vertically",
+        "sidebar": "collapsible"
+      }
+    }
+  },
+  "consistency_rules": {
+    "all_margins_paddings": "Usare solo valori da spacing_scale",
+    "all_font_sizes": "Usare solo valori da typography_scale",
+    "all_borders": "Usare solo valori da border_radius",
+    "minimum_touch_target": "44x44px per mobile",
+    "consistent_gaps": "Usare gap CSS, non margin tra sibling elements",
+    "optical_alignment": "Centratura verticale con flexbox/grid, non calc() manuale"
+  }
+}
