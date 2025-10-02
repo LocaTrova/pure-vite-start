@@ -1,11 +1,14 @@
-import { SiNetflix } from "react-icons/si";
+import netflixLogo from "@assets/Netflix-Logo-2006-500x333-1_1759442083338.png";
+import mediasetLogo from "@assets/Mediaset_Logo_1759442083337.png";
+import pinellaLogo from "@assets/Pinella_RGB_Wordmark_ColourWhite_M_1759442083338.webp";
+import gaumontLogo from "@assets/Gaumont_logo.svg_1759442090117.png";
 
 export default function ClientLogos() {
   const logos = [
-    { name: "Netflix", icon: SiNetflix },
-    { name: "Gaumont", icon: SiNetflix },
-    { name: "Mediaset", icon: SiNetflix },
-    { name: "Peppermint", icon: SiNetflix },
+    { name: "Netflix", src: netflixLogo },
+    { name: "Mediaset", src: mediasetLogo },
+    { name: "Pinella", src: pinellaLogo },
+    { name: "Gaumont", src: gaumontLogo },
   ];
 
   return (
@@ -22,7 +25,11 @@ export default function ClientLogos() {
               className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
               data-testid={`logo-${logo.name.toLowerCase()}`}
             >
-              <logo.icon className="w-20 h-20" />
+              <img 
+                src={logo.src} 
+                alt={logo.name}
+                className="h-12 w-auto object-contain"
+              />
             </div>
           ))}
         </div>
