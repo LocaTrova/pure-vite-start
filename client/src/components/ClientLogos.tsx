@@ -18,17 +18,17 @@ export default function ClientLogos() {
           Trusted by
         </h2>
         
-        <div className="flex flex-wrap justify-center items-center gap-12 grayscale hover:grayscale-0 transition-all duration-300">
+        <div className="flex flex-wrap justify-center items-center gap-12">
           {logos.map((logo) => (
             <div
               key={logo.name}
-              className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+              className="flex items-center justify-center"
               data-testid={`logo-${logo.name.toLowerCase()}`}
             >
               <img 
                 src={logo.src} 
                 alt={logo.name}
-                className="h-12 w-auto object-contain"
+                className="h-16 w-auto object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
           ))}
