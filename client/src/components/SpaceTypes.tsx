@@ -22,7 +22,7 @@ export default function SpaceTypes() {
             Accettiamo ogni tipo di spazio
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Location residenziali, commerciali o spazi unici. Se hai uno spazio con le autorizzazioni giuste, può diventare una location.
+            Location residenziali, commerciali o spazi unici. Se hai uno spazio può diventare una location*
           </p>
         </div>
         
@@ -50,6 +50,10 @@ export default function SpaceTypes() {
             </Card>
           ))}
         </div>
+        
+        <p className="text-xs text-muted-foreground text-center mt-8 max-w-3xl mx-auto">
+          *Per eventi pubblici verranno selezionate solo location con le autorizzazioni necessarie
+        </p>
       </div>
     </section>
   );
