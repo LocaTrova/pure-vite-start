@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ClientLogos from "@/components/ClientLogos";
 import HowItWorks from "@/components/HowItWorks";
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Navbar onCTAClick={scrollToForm} />
       <Hero onCTAClick={scrollToForm} />
       <ClientLogos />
       <HowItWorks />
