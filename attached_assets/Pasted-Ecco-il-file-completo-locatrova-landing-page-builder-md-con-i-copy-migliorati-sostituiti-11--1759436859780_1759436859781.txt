@@ -1,0 +1,441 @@
+Ecco il file completo **locatrova-landing-page-builder.md** con i copy migliorati sostituiti:[11]
+
+```markdown
+# Landing Page Locatrova - Specifica Builder.io
+
+## Panoramica Progetto
+Landing page responsive per Locatrova con form multi-step ottimizzato per conversioni. Integra elementi del design esistente con best practices di conversion optimization.
+
+---
+
+## 🎯 HERO SECTION
+
+### Layout & Background
+- **Container**: Section block (full page width)
+- **Background**: 
+  - Immagine: Location elegante (villa/loft/set cinematografico) 
+  - Overlay: Gradiente scuro opacity 0.5-0.6
+  - Altezza: 100vh mobile, 80vh desktop
+  - Position: Center center
+
+### Content Structure (Builder Columns 2-colonne)
+**Colonna Sinistra (60%):**
+```
+H1: "Trasforma il tuo spazio in una fonte di reddito" 
+Sottotitolo: "Locatrova connette il tuo spazio con produzioni creative ed eventi. Come Airbnb, ma per shooting, film e produzione."
+CTA Primary: "Registra il tuo spazio" (scroll to form)
+Trust Badge: "Oltre 500 spazi attivi -  Partner di Netflix e Mediaset"
+```
+
+**Colonna Destra (40%):**
+- Immagine/Video: Montaggio di location di successo
+- Mobile: Stack verticale, immagine sopra testo
+
+### Styling Guide
+- **Typography**: 
+  - H1: 3.5rem desktop, 2.5rem mobile, font-weight: 700
+  - Subtitle: 1.25rem, font-weight: 400, opacity: 0.9
+- **CTA Button**: 
+  - Background: #FF6B35 (arancione energico)
+  - Padding: 16px 32px, border-radius: 8px
+  - Hover: transform scale(1.05), box-shadow
+- **Colors**: Testo bianco, overlay rgba(0,0,0,0.5)
+
+---
+
+## 💼 SEZIONE LOGHI CLIENTI
+
+### Structure
+- **Container**: Section block, background grigio chiaro (#F8F9FA)
+- **Layout**: Single column, centered
+- **Content**:
+  - Titolo: "Trusted by" o "Alcuni nostri clienti"
+  - Logo grid: 4-5 loghi per riga desktop, 2-3 mobile
+
+### Logo Specifications
+- **Loghi**: Netflix, Gaumont, Mediaset, Peppermint (dal PDF allegato)
+- **Style**: Grayscale default, hover→ full color
+- **Size**: Max-width 150px, altezza auto
+- **Spacing**: Gap 2rem tra loghi
+
+```
+.logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  filter: grayscale(100%);
+  transition: 0.3s ease;
+}
+.logo-grid:hover {
+  filter: grayscale(0%);
+}
+```
+
+---
+
+## ⚙️ SEZIONE "COME FUNZIONA"
+
+### Layout Structure (Builder Columns 3-colonne)
+- **Container**: Section block, padding 80px 0
+- **Background**: Bianco o grigio molto chiaro
+- **Titolo**: "Semplice come affittare su Airbnb"
+
+### Step Cards (3 colonne responsive)
+**Step 1: "Carica il tuo spazio"**
+- Icona: 🏠 o SVG custom
+- Testo: "Bastano 10 minuti. Aggiungi foto e descrizione della tua location. Il nostro team ti aiuta a valorizzarla al meglio."
+
+**Step 2: "Le produzioni guardano e selezionano"**  
+- Icona: 🤖 o SVG custom
+- Testo: "Event manager e case di produzione cercano location sulla piattaforma. Quando il tuo spazio è perfetto per loro, ti preparano una proposta."
+
+**Step 3: "Ricevi la richiesta e decidi"**
+- Icona: 💰 o SVG custom  
+- Testo: "Ti arriva la richiesta diretta con tutti i dettagli. Leggi, valuta e scegli se accettare. Nessun obbligo, massima libertà."
+
+### Card Styling
+```
+.step-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.step-card:hover {
+  transform: translateY(-8px);
+}
+```
+
+---
+
+## 💰 CASE STUDY SECTION
+
+### Layout
+- **Container**: Section con background gradiente leggero
+- **Structure**: 2 colonne (60% testo, 40% visual)
+
+### Content
+```
+Titolo: "I proprietari che hanno provato Locatrova"
+Subtitle: "Storie vere di chi ha trasformato il proprio spazio"
+
+Case Study Card:
+- Badge: "Case Study"
+- Headline: "Marco ha guadagnato €5.000 in 3 mesi con il suo spazio"  
+- Descrizione: "Marco aveva uno spazio a Milano che usava poco. L'ha registrato su Locatrova e in 3 mesi ha ospitato 3 shooting fotografici e 1 video musicale. Ha guadagnato €5.000 extra senza cambiare nulla nella sua routine."
+- Location: "📍 Spazio di Marco - Milano, Italia"
+```
+
+---
+
+## 🏠 TIPOLOGIE SPAZI SECTION
+
+### Layout Grid (Builder Columns 3x3)
+- **Container**: Section, background bianco
+- **Titolo**: "Accettiamo ogni tipo di spazio"
+- **Subtitle**: "Location residenziali, commerciali o spazi unici. Se hai uno spazio con le autorizzazioni giuste, può diventare una location."
+
+### Categorie (9 cards totali, 3x3 grid):
+1. **Case Private** - Abitazioni e residenze
+2. **Casali & Ville** - Proprietà rurali e di prestigio  
+3. **Uffici** - Spazi corporate e professionali
+4. **Sale Eventi** - Location per eventi e celebrazioni
+5. **Spazi Creativi** - Studi artistici e laboratori
+6. **Co-working** - Spazi di lavoro condiviso
+7. **Spazi Industriali** - Capannoni e strutture industriali
+8. **Location Uniche** - Spazi particolari e caratteristici
+9. **[Categoria Custom]** - Da definire
+
+### Card Design
+- Icon + Titolo + Descrizione breve
+- Hover effect con background color change
+- Border radius: 8px, box-shadow subtle
+
+---
+
+## ❓ FAQ SECTION
+
+### Structure
+- **Container**: Section, background #F8F9FA
+- **Layout**: Single column, max-width 800px
+- **Titolo**: "Domande Frequenti"
+
+### FAQ Items (Accordion expandibili):
+```
+Q1: "Quanto posso guadagnare con il mio spazio?"
+A1: "Dipende dal tipo di location e dalla zona. In media: €300-800 per uno shooting di mezza giornata, €1.500-3.000 per produzioni di più giorni. Ti diamo una stima dopo aver visto il tuo spazio."
+
+Q2: "Cosa succede se si rompono cose nello spazio?"
+A2: "Ogni produzione ha un'assicurazione obbligatoria. Più una polizza extra che copre eventuali danni. Prima e dopo facciamo foto della location per sicurezza."
+
+Q3: "Devo modificare il mio spazio?"
+A3: "Dipende dal progetto. Spesso le produzioni cercano location 'vere' con gli arredi esistenti. Ti diciamo sempre in anticipo cosa serve preparare."
+
+Q4: "Ci sono costi per registrare il mio spazio?"
+A4: "No, è gratis. Guadagniamo una commissione del 20% solo quando guadagni tu. Nessun abbonamento, nessun costo nascosto."
+
+Q5: "Posso rifiutare una richiesta?"
+A5: "Sempre. Ogni richiesta è un'opportunità, non un obbligo. Hai 24 ore per decidere e puoi dire di no senza problemi."
+
+Q6: "Come funziona la prima chiamata?"
+A6: "È una chiacchierata di 15 minuti con il nostro team. Guardiamo insieme la tua location, rispondiamo alle tue domande e ti diamo un'idea di cosa aspettarti. Tutto gratuito."
+```
+
+---
+
+## 📝 FORM MULTI-STEP SECTION
+
+### Container Setup
+- **Position**: Section full-width, background gradient
+- **Titolo**: "Inizia in 60 secondi"
+- **Subtitle**: "Compila il form in 60 secondi. Ti richiameremo noi per fare due chiacchiere sul tuo spazio, senza impegno."
+
+### Form Multi-Step Structure
+
+#### Step 1: Tipo di Spazio (Visual Selection)
+```
+Domanda: "Che tipo di spazio hai?"
+Opzioni (button image selector):
+- 🏠 Casa/Appartamento
+- 🏢 Ufficio/Spazio commerciale  
+- 🏭 Spazio industriale/Warehouse
+- 🏰 Villa/Casale storico
+- 🎭 Studio/Spazio creativo
+- 🌿 Spazio esterno/Giardino
+- 💼 Sala eventi/Meeting room
+- ✨ Location unica/Particolare
+```
+
+#### Step 2: Informazioni Base
+```
+Campi:
+- Nome e Cognome (required)
+- Email (required) 
+- Telefono (required)
+- Città/Provincia (required)
+```
+
+#### Step 3: Dettagli dello Spazio
+```
+Campi:
+- Metri quadrati (slider 20-1000+ mq)
+- Disponibilità (checkbox multiple):
+  -  Giorni feriali -  Weekend -  Sera/Notte -  Periodo esteso
+- Caratteristiche speciali (textarea):
+  "Descrivi brevemente le caratteristiche uniche del tuo spazio"
+```
+
+#### Step 4: Aspettative & Conferma
+```
+Campi:
+- Budget aspettative (select):
+  -  Un'entrata extra ogni tanto va benissimo
+  -  Mi piacerebbe guadagnare regolarmente con il mio spazio
+  -  Voglio sfruttare al massimo la mia location
+  -  Non ho idea, aiutatemi voi
+- Note aggiuntive (textarea opzionale)
+- Checkbox privacy: "Accetto termini e condizioni e privacy policy"
+- Checkbox marketing: "Desidero ricevere aggiornamenti su opportunità future"
+
+CTA Final: "Richiedi la chiamata gratuita"
+```
+
+### Form Design Specs
+- **Progress bar**: Visibile in alto (Step 1/4, 2/4, etc.)
+- **Navigation**: "Indietro" e "Avanti" buttons
+- **Validation**: Inline validation per ogni campo
+- **Mobile**: Stack verticale, touch-friendly buttons
+- **Loading states**: Spinner su submit finale
+
+### Form Styling
+```
+.form-step {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  transition: width 0.3s ease;
+}
+
+.image-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.image-option {
+  padding: 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-option:hover,
+.image-option.selected {
+  border-color: #FF6B35;
+  background: #fff5f0;
+}
+```
+
+---
+
+## 🏁 FOOTER/CTA FINALE
+
+### Structure
+- **Background**: Gradiente dark (#1a202c → #2d3748)
+- **Layout**: Centrato, padding generoso
+
+### Content
+```
+Headline: "Il tuo spazio potrebbe già guadagnare"
+Subtitle: "Centinaia di proprietari hanno già trasformato i loro spazi in location. Iscriversi è gratis e richiede 10 minuti."
+CTA: "Inizia ora - È gratuito"
+Trust elements: 
+- "✓ Registra il tuo spazio gratuitamente"
+- "✓ Decidi tu per ogni richiesta"  
+- "✓ Copertura assicurativa per ogni location"
+- "✓ Team di supporto sempre disponibile"
+```
+
+### Footer Links
+- Privacy Policy | Termini e Condizioni | Contatti
+- Social: LinkedIn, Instagram
+- Copyright: "Locatrova © 2025"
+
+---
+
+## 📱 RESPONSIVE BREAKPOINTS
+
+### Mobile (< 768px)
+- Hero: Stack verticale, testo sopra
+- Steps: Single column layout
+- Form: Full width, touch-friendly
+- Loghi: 2 per riga
+
+### Tablet (768px - 1024px)  
+- Hero: Mantieni 2 colonne ma con padding ridotto
+- Steps: 2 colonne, terza sotto
+- Form: Max-width 500px
+
+### Desktop (> 1024px)
+- Layout completo come specificato
+- Hover effects attivi
+- Form centrato con max-width 600px
+
+---
+
+## 🎨 COLOR PALETTE & TYPOGRAPHY
+
+### Colori Primari
+- **Primary Orange**: #FF6B35
+- **Secondary Orange**: #F7931E  
+- **Dark**: #1a202c
+- **Grey Light**: #f8f9fa
+- **Grey Medium**: #6b7280
+- **Success Green**: #10b981
+- **Error Red**: #ef4444
+
+### Typography
+- **Headings**: Inter, Poppins, o system-ui
+- **Body**: Inter, system-ui
+- **Weights**: 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+
+### Spacing Scale
+- xs: 0.5rem (8px)
+- sm: 1rem (16px)  
+- md: 1.5rem (24px)
+- lg: 2rem (32px)
+- xl: 3rem (48px)
+- 2xl: 4rem (64px)
+- 3xl: 6rem (96px)
+
+---
+
+## 🚀 OPTIMIZATIONS & PERFORMANCE
+
+### Conversion Optimization
+- Form multi-step per ridurre abbandoni
+- Visual selectors invece di dropdown
+- Progress bar per engagement
+- Trust badges e social proof
+- Case study con numeri concreti
+- Mobile-first approach
+
+### Loading Performance  
+- Immagini ottimizzate (WebP)
+- Lazy loading per immagini below fold
+- Critical CSS inline
+- Font preload per typography custom
+
+### Analytics Tracking
+- Form step completion rates
+- Button click tracking
+- Scroll depth tracking
+- Heat mapping su elementi critici
+
+---
+
+## 🔧 BUILDER.IO IMPLEMENTATION NOTES
+
+### Componenti Builder Consigliati
+- **Section** per container principali
+- **Columns** per layout responsive
+- **Image** con lazy loading
+- **Text** per contenuti
+- **Button** per CTA
+- **Custom Code** per form multi-step logic
+
+### Custom CSS Classes
+```
+.hero-overlay { /* Overlay personalizzato */ }
+.step-card { /* Card steps styling */ }
+.form-multi-step { /* Container form */ }
+.progress-indicator { /* Progress bar */ }
+.image-selector { /* Visual form options */ }
+.trust-badge { /* Badge di fiducia */ }
+```
+
+### JavaScript Requirements
+- Form validation e navigation
+- Progress bar update
+- Image selector interaction  
+- Form submission handling
+- Analytics events tracking
+
+---
+
+**Nota**: Questa specifica è ottimizzata per Builder.io e include tutti i copy migliorati con tono Airbnb (semplice, friendly, efficace) e processo corretto di funzionamento della piattaforma.
+```
+
+Ho sostituito tutti i copy nelle sezioni chiave mantenendo intatta tutta la struttura tecnica del file originale.[11]
+
+[1](https://support.google.com/docs/answer/12014036?hl=it)
+[2](https://learn.microsoft.com/it-it/contribute/content/markdown-reference)
+[3](https://www.reddit.com/r/ObsidianMD/comments/ysgaah/view_markdown_as_unformatted_text/)
+[4](https://experienceleague.adobe.com/it/docs/contributor/contributor-guide/writing-essentials/markdown)
+[5](https://support.zendesk.com/hc/it/articles/4408846544922-Formattazione-del-testo-con-Markdown)
+[6](https://products.aspose.com/words/it/python-net/edit/markdown/)
+[7](https://www.onlyoffice.com/blog/it/2024/04/modificare-file-md-in-onlyoffice)
+[8](https://github.com/opendatasicilia/tansignari/issues/93)
+[9](https://www.ionos.it/digitalguide/siti-web/programmazione-del-sito-web/markdown/)
+[10](https://learn.microsoft.com/it-it/azure/devops/project/wiki/markdown-guidance?view=azure-devops)
+[11](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/108422501/c6ad634a-a787-4579-a05d-356d19bfb8df/locatrova-landing-page-builder.md)
