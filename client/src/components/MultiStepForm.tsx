@@ -65,6 +65,24 @@ export default function MultiStepForm() {
     }));
   };
 
+  const isStepValid = () => {
+    switch (currentStep) {
+      case 1:
+        return formData.spaceType !== "";
+      case 2:
+        return formData.name.trim() !== "" && 
+               formData.email.trim() !== "" && 
+               formData.phone.trim() !== "" && 
+               formData.city.trim() !== "";
+      case 3:
+        return true;
+      case 4:
+        return formData.privacy;
+      default:
+        return false;
+    }
+  };
+
   return (
     <section id="form" className="w-full bg-gradient-to-br from-primary/5 via-accent/5 to-background py-16 sm:py-24 scroll-mt-14">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -290,6 +308,7 @@ export default function MultiStepForm() {
                 <Button
                   onClick={handleNext}
                   className="flex-1"
+                  disabled={!isStepValid()}
                   data-testid="button-next"
                 >
                   Avanti
@@ -299,10 +318,10 @@ export default function MultiStepForm() {
                 <Button
                   onClick={handleSubmit}
                   className="flex-1"
-                  disabled={!formData.privacy}
+                  disabled={!isStepValid()}
                   data-testid="button-submit"
                 >
-                  Invia il form
+                  Invia richiesta
                 </Button>
               )}
             </div>
