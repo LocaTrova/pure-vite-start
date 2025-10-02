@@ -15,10 +15,10 @@ export default function SpaceTypes() {
   ];
 
   return (
-    <section className="w-full bg-background py-16 sm:py-20 lg:py-32">
+    <section className="w-full bg-background py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Accettiamo ogni tipo di spazio
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -26,7 +26,7 @@ export default function SpaceTypes() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((category, index) => (
             <Card
               key={index}
@@ -34,8 +34,8 @@ export default function SpaceTypes() {
               data-testid={`card-space-${index + 1}`}
             >
               <CardContent className="p-6 flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <category.icon className="w-6 h-6 text-primary" />
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <category.icon className="w-5 h-5 text-primary" />
                 </div>
                 
                 <div className="flex-1 min-w-0">

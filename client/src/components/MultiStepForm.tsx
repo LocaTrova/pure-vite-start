@@ -67,10 +67,10 @@ export default function MultiStepForm() {
   };
 
   return (
-    <section id="form" className="w-full bg-gradient-to-br from-primary/5 via-accent/5 to-background py-16 sm:py-20 lg:py-32">
+    <section id="form" className="w-full bg-gradient-to-br from-primary/5 via-accent/5 to-background py-16 sm:py-24 scroll-mt-14">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Inizia in 60 secondi
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -85,7 +85,7 @@ export default function MultiStepForm() {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-2">
+          <p className="text-center text-sm text-muted-foreground mt-4">
             Step {currentStep} di {totalSteps}
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function MultiStepForm() {
 
           <CardContent className="space-y-6">
             {currentStep === 1 && (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {spaceTypes.map((type) => (
                   <button
                     key={type.value}
@@ -132,7 +132,7 @@ export default function MultiStepForm() {
             )}
 
             {currentStep === 2 && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Nome e Cognome *</Label>
                   <Input
@@ -183,7 +183,7 @@ export default function MultiStepForm() {
 
             {currentStep === 3 && (
               <div className="space-y-6">
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Label>Metri quadrati: {formData.squareMeters[0]} mq</Label>
                   <Slider
                     value={formData.squareMeters}
@@ -195,9 +195,9 @@ export default function MultiStepForm() {
                   />
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Label>Disponibilità</Label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {["Giorni feriali", "Weekend", "Sera/Notte", "Periodo esteso"].map((option) => (
                       <div key={option} className="flex items-center gap-2">
                         <Checkbox
@@ -257,7 +257,7 @@ export default function MultiStepForm() {
                   />
                 </div>
                 
-                <div className="space-y-3 pt-2">
+                <div className="space-y-4 pt-2">
                   <div className="flex items-start gap-2">
                     <Checkbox
                       id="privacy"
@@ -285,7 +285,7 @@ export default function MultiStepForm() {
               </div>
             )}
 
-            <div className="flex gap-3 pt-4">
+            <div className="flex gap-4 pt-6">
               {currentStep > 1 && (
                 <Button
                   variant="outline"

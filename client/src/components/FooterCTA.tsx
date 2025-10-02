@@ -16,9 +16,9 @@ export default function FooterCTA({ onCTAClick }: FooterCTAProps) {
 
   return (
     <footer className="w-full bg-gradient-to-b from-foreground/95 to-foreground text-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Il tuo spazio potrebbe già guadagnare
           </h2>
           <p className="text-lg text-background/80 mb-8">
@@ -29,7 +29,7 @@ export default function FooterCTA({ onCTAClick }: FooterCTAProps) {
             size="lg"
             variant="secondary"
             onClick={onCTAClick}
-            className="text-lg px-8 py-6 mb-10"
+            className="text-lg mb-12"
             data-testid="button-cta-footer"
           >
             Inizia ora - È gratuito

@@ -13,7 +13,7 @@ export default function Home() {
   const formRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (

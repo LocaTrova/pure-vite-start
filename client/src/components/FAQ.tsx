@@ -34,10 +34,10 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="w-full bg-muted/30 py-16 sm:py-20 lg:py-32">
+    <section className="w-full bg-muted/30 py-16 sm:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Domande Frequenti
           </h2>
         </div>
@@ -50,10 +50,10 @@ export default function FAQ() {
               className="bg-background rounded-lg px-6 border-0 shadow-sm"
               data-testid={`accordion-item-${index + 1}`}
             >
-              <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+              <AccordionTrigger className="text-left font-semibold hover:no-underline py-6">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

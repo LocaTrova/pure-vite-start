@@ -5,10 +5,10 @@ import caseStudyImage from "@assets/generated_images/Case_study_testimonial_phot
 
 export default function CaseStudy() {
   return (
-    <section className="w-full bg-gradient-to-b from-muted/20 to-background py-16 sm:py-20 lg:py-32">
+    <section className="w-full bg-gradient-to-b from-muted/20 to-background py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             I proprietari che hanno provato Locatrova
           </h2>
           <p className="text-lg text-muted-foreground">
