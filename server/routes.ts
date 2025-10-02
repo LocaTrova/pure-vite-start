@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { formSubmissionSchema } from "@shared/schema";
-import { appendToSheet } from "./googleSheets";
+import { appendToSheet, createSpreadsheetIfNeeded } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/submit-form", async (req, res) => {
@@ -63,6 +63,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.status(500).json({ 
         error: "Errore interno del server. Riprova più tardi." 
+      });
+    }
+  });
+
+  app.post("/api/setup-sheets", async (req, res) => {
+    try {
+      const spreadsheetId = await createSpreadsheetIfNeeded();
+      
+      res.json({ 
+        success: true, 
+        spreadsheetId,
+        message: "Google Sheet creato con successo!"
+      });
+    } catch (error: any) {
+      console.error("Errore nella creazione del Google Sheet:", error);
+      res.status(500).json({ 
+        error: "Errore nella creazione del foglio. Verifica che l'integrazione Google Sheets sia configurata correttamente." 
       });
     }
   });
