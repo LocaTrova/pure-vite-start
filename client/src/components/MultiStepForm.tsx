@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,8 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import type { FormSubmission } from "@shared/schema";
+import { initFormSession, markFormSubmitted } from "@/lib/formSession";
+import { useFormAbandonment } from "@/hooks/useFormAbandonment";
 
 export default function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -30,6 +32,36 @@ export default function MultiStepForm() {
     marketing: false,
   });
 
+  // Initialize form session on mount
+  useEffect(() => {
+    initFormSession();
+  }, []);
+
+  // Determine if user has started filling the form
+  const hasStartedFilling = Object.entries(formData).some(([key, value]) => {
+    if (key === 'marketing' || key === 'privacy') return false; // Ignore checkboxes
+    if (key === 'squareMeters') {
+      const sqm = value as number[];
+      return sqm[0] !== 100; // Default is 100
+    }
+    if (Array.isArray(value)) return value.length > 0;
+    if (typeof value === 'string') return value !== "";
+    return false;
+  });
+
+  // Track form abandonment
+  useFormAbandonment({
+    spaceType: formData.spaceType,
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    city: formData.city,
+    squareMeters: formData.squareMeters[0],
+    availability: formData.availability,
+    characteristics: formData.characteristics,
+    notes: formData.notes,
+  }, hasStartedFilling);
+
   const submitMutation = useMutation({
     mutationFn: async (data: FormSubmission) => {
       const response = await fetch("/api/submit-form", {
@@ -43,6 +75,10 @@ export default function MultiStepForm() {
       if (!response.ok) {
         throw new Error(result.error || "Errore nell'invio della richiesta");
       }
+      
+      // CRITICAL FIX: Mark form as submitted ONLY after successful response
+      // This prevents abandonment emails from being blocked when submission fails
+      markFormSubmitted();
       
       return result;
     },
@@ -65,6 +101,9 @@ export default function MultiStepForm() {
         marketing: false,
       });
       setCurrentStep(1);
+      
+      // Reinitialize session for potential new submission
+      initFormSession();
     },
     onError: (error: any) => {
       toast({
